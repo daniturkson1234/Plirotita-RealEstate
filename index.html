@@ -154,7 +154,7 @@
   min-width: 180px;
 }
 
-.input-group input {
+.input-group select {
   width: 100%;
   padding: 12px;
   border-radius: 6px;
@@ -1036,21 +1036,39 @@ textarea {
     <div class="search-card">
       <h4>Search for available properties</h4>
 
-      <form class="search-form">
-        <div class="input-group">
-          <input type="text" placeholder="Location" />
-        </div>
+      <form class="search-form" id="searchForm">
+    <div class="input-group">
+      <select id="location">
+        <option value="">Location</option>
+        <option value="Accra">Accra</option>
+        <option value="Kumasi">Kumasi</option>
+        <option value="Takoradi">Takoradi</option>
+      </select>
+    </div>
 
-        <div class="input-group">
-          <input type="text" placeholder="Property Type" />
-        </div>
+    <div class="input-group">
+      <select id="type">
+        <option value="">Property Type</option>
+        <option value="Apartment">Apartment</option>
+        <option value="Villa">Villa</option>
+        <option value="Office">Office</option>
+      </select>
+    </div>
 
-        <div class="input-group">
-          <input type="text" placeholder="Budget" />
-        </div>
+    <div class="input-group">
+      <select id="budget">
+        <option value="">Budget</option>
+        <option value="75000-100000">₵75,000 - ₵100,000</option>
+        <option value="110000-250000">₵110,000 - ₵250,000</option>
+        <option value="260000-500000">₵260,000 - ₵500,000</option>
+        <option value="510000-900000">₵510,000 - ₵910,000</option>
+        <option value="910000-3000000">₵910,000 - ₵3,000,000</option>
+      </select>
+    </div>
 
-        <button type="submit" class="btn-primary">Search</button>
-      </form>
+    <button type="submit" class="btn-primary">Search</button>
+  </form>
+
     </div>
   </section>
 
@@ -1079,13 +1097,13 @@ textarea {
   <div class="play-btn" id="playVideo">▶</div>
 
   <!-- Inline Video -->
-  <video 
+  <video style="height: 385.9px;"
     class="inline-video" 
     id="inlineVideo" 
     controls 
     playsinline
   >
-    <source src="your-video.mp4" type="video/mp4">
+    <source src="video.mp4" type="video/mp4">
     Your browser does not support the video tag.
   </video>
 </div>
@@ -1316,15 +1334,64 @@ textarea {
   </div>
 </div>
 
+<script src="props.js"></script>
 <script>
-  /* ===== Property Data (scales to backend later) ===== */
-  const properties = Array.from({ length: 20 }, (_, i) => ({
-    name: `Property ${i + 1}`,
-    tag: "Popular",
-    price: `₵ ${(i + 1) * 120000}`,
-    desc: "Modern property with premium amenities and excellent location.",
-    img: "https://images.unsplash.com/photo-1568605114967-8130f3a36994"
-  }));
+
+const searchForm = document.getElementById("searchForm");
+
+searchForm.addEventListener("submit", (e) => {
+  e.preventDefault();
+
+  const location = document.getElementById("location").value;
+  const type = document.getElementById("type").value;
+  const budget = document.getElementById("budget").value;
+
+  let min = 0, max = Infinity;
+  if (budget) {
+    [min, max] = budget.split("-").map(Number);
+  }
+
+  const filtered = properties.filter(p => {
+    return (
+      (!location || p.location === location) &&
+      (!type || p.type === type) &&
+      p.price >= min &&
+      p.price <= max
+    );
+  });
+
+  renderFiltered(filtered);
+});
+
+function renderFiltered(list) {
+  grid.innerHTML = "";
+
+  if (!list.length) {
+    grid.innerHTML = "<p>No properties found.</p>";
+    return;
+  }
+
+  list.forEach(p => {
+    grid.insertAdjacentHTML("beforeend", `
+      <div class="property-card">
+        <div class="property-image">
+          <img src="${p.img}" alt="${p.name}">
+          <span class="tag">${p.tag}</span>
+        </div>
+        <div class="property-content">
+          <h3>${p.name}</h3>
+          <p>${p.desc}</p>
+          <div class="property-footer">
+            <span class="price">₵ ${p.price.toLocaleString()}</span>
+            <button class="book-btn">Book</button>
+          </div>
+        </div>
+      </div>
+    `);
+  });
+}
+
+
 
   const grid = document.getElementById("propertyGrid");
   const toggleBtn = document.getElementById("toggleBtn");
@@ -1415,6 +1482,7 @@ textarea {
 
   playBtn.addEventListener("click", () => {
     container.classList.add("playing");
+    video.currentTime = 0;
     video.play();
   });
 </script>
