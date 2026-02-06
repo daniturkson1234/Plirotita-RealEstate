@@ -14,7 +14,7 @@
     location: "Accra",
     type: "Apartment",
     price: 85000,
-    tag: "Popular",
+    tag: "New",
     desc: "Modern apartment in prime city location.",
     img: "https://images.unsplash.com/photo-1568605114967-8130f3a36994"
   },{
