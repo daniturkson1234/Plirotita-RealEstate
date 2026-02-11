@@ -16,7 +16,7 @@
     price: 85000,
     tag: "New",
     desc: "Modern apartment in prime city location.",
-    img: "https://images.unsplash.com/photo-_TPTXZd9mOo"
+    img: "https://images.unsplash.com/photo-1568605114967-8130f3a36994"
   },{
     name: "Luxury Apartment",
     location: "Accra",
@@ -24,7 +24,7 @@
     price: 78000,
     tag: "Popular",
     desc: "Modern apartment in prime city location.",
-    img: "https://images.unsplash.com/photo-g39p1kDjvSY"
+    img: "https://images.unsplash.com/photo-1568605114967-8130f3a36994"
   },
   {
     name: "Luxury Apartment",
@@ -33,7 +33,7 @@
     price: 95000,
     tag: "Urban",
     desc: "Modern apartment in prime city location.",
-    img: "https://images.unsplash.com/photo-9s0a2tdtXs8"
+    img: "https://images.unsplash.com/photo-1568605114967-8130f3a36994"
   },
   {
     name: "Luxury Apartment",
