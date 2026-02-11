@@ -16,7 +16,7 @@
     price: 85000,
     tag: "New",
     desc: "Modern apartment in prime city location.",
-    img: "https://images.unsplash.com/photo-1568605114967-8130f3a36994"
+    img: "https://unsplash.com/photos/white-and-brown-concrete-building-under-blue-sky-during-daytime-_TPTXZd9mOo"
   },{
     name: "Luxury Apartment",
     location: "Accra",
@@ -24,23 +24,23 @@
     price: 78000,
     tag: "Popular",
     desc: "Modern apartment in prime city location.",
-    img: "https://images.unsplash.com/photo-1568605114967-8130f3a36994"
+    img: "https://unsplash.com/photos/white-concrete-building-g39p1kDjvSY"
   },
   {
     name: "Luxury Apartment",
     location: "Kumasi",
     type: "Apartment",
     price: 95000,
-    tag: "Popular",
+    tag: "Urban",
     desc: "Modern apartment in prime city location.",
-    img: "https://images.unsplash.com/photo-1568605114967-8130f3a36994"
+    img: "https://unsplash.com/photos/a-large-white-house-with-palm-trees-in-front-of-it-9s0a2tdtXs8"
   },
   {
     name: "Luxury Apartment",
     location: "Kumasi",
     type: "Apartment",
     price: 77000,
-    tag: "Popular",
+    tag: "Featured",
     desc: "Modern apartment in prime city location.",
     img: "https://images.unsplash.com/photo-1568605114967-8130f3a36994"
   },
